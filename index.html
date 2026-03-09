@@ -9,49 +9,103 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <form id="ec">
-    <select id="element-select">
-      <option value="" disabled selected>Element</option>
-      <option value="h1">H1</option>
-      <option value="h2">H2</option>
-      <option value="h3">H3</option>
-      <option value="h4">H4</option>
-      <option value="h5">H5</option>
-      <option value="h6">H6</option>
-      <option value="p">P</option>
-      <option value="button">Button</option>
-      <option value="small">Small</option>
-      <option value="input">Input</option>
-      <option value="div">Div</option>
-      <option value="span">Span</option>
-      <option value="ul">Unordered List (ul)</option>
-      <option value="ol">Ordered List (ol)</option>
-      <option value="li">List Item (li)</option>
-      <option value="a">Link (a)</option>
-      <option value="img">Image (img)</option>
-      <option value="table">Table</option>
-      <option value="tr">Table Row (tr)</option>
-      <option value="td">Table Cell (td)</option>
-      <option value="th">Table Header (th)</option>
-      <option value="em">Emphasis (em)</option>
-      <option value="strong">Strong</option>
-      <option value="blockquote">Blockquote</option>
-      <option value="code">Code</option>
-      <option value="pre">Preformatted Text (pre)</option>
-      <option value="hr">Horizontal Rule (hr)</option>
-      <option value="br">Line Break (br)</option>
-      <option value="label">Label</option>
-      <option value="textarea">Textarea</option>
-      <option value="select">Select</option>
-      <option value="option">Option</option>
-    </select>
-    <input type="text" id="element-content" placeholder="Inside"><br>
-    <button type="button" id="render-button">Render</button>
-    <button type="button" id="clear-button">Clear</button>
-  </form>
-  <div id="result-container">
-    <p id="result"></p>
-    <pre id="html-code"></pre>
-  </div>
+  <main class="container">
+    <form id="ec" aria-label="Render form">
+      <h1>RenderFill</h1>
+      <p class="subtitle">Build HTML visually, iterate quickly, and export safely.</p>
+
+      <label for="template-select">Quick templates</label>
+      <div class="template-row">
+        <select id="template-select">
+          <option value="" selected>Choose a template</option>
+          <option value="hero">Hero title + paragraph</option>
+          <option value="cta">Call-to-action link button</option>
+          <option value="list">Starter unordered list</option>
+          <option value="table">Starter 2-column table row</option>
+        </select>
+        <button type="button" id="use-template-button">Use</button>
+      </div>
+
+      <label for="element-select">Element</label>
+      <select id="element-select">
+        <option value="" disabled selected>Choose an element</option>
+        <option value="h1">H1</option>
+        <option value="h2">H2</option>
+        <option value="h3">H3</option>
+        <option value="h4">H4</option>
+        <option value="h5">H5</option>
+        <option value="h6">H6</option>
+        <option value="p">Paragraph (p)</option>
+        <option value="button">Button</option>
+        <option value="small">Small</option>
+        <option value="input">Input</option>
+        <option value="div">Div</option>
+        <option value="span">Span</option>
+        <option value="ul">Unordered List (ul)</option>
+        <option value="ol">Ordered List (ol)</option>
+        <option value="li">List Item (li)</option>
+        <option value="a">Link (a)</option>
+        <option value="img">Image (img)</option>
+        <option value="table">Table</option>
+        <option value="tr">Table Row (tr)</option>
+        <option value="td">Table Cell (td)</option>
+        <option value="th">Table Header (th)</option>
+        <option value="em">Emphasis (em)</option>
+        <option value="strong">Strong</option>
+        <option value="blockquote">Blockquote</option>
+        <option value="code">Code</option>
+        <option value="pre">Preformatted Text (pre)</option>
+        <option value="hr">Horizontal Rule (hr)</option>
+        <option value="br">Line Break (br)</option>
+        <option value="label">Label</option>
+        <option value="textarea">Textarea</option>
+        <option value="select">Select</option>
+        <option value="option">Option</option>
+      </select>
+
+      <label for="element-content">Content</label>
+      <input type="text" id="element-content" placeholder="Inside text or URL">
+
+      <label for="element-attributes">Extra attributes</label>
+      <input type="text" id="element-attributes" placeholder='class="card" id="hero" data-role="lead"'>
+      <small class="hint">Tip: use quoted HTML attributes (e.g. <code>class="hero"</code>).</small>
+
+      <div class="actions">
+        <button type="button" id="render-button">Render</button>
+        <button type="button" id="undo-button">Undo</button>
+        <button type="button" id="clear-button">Clear</button>
+      </div>
+
+      <div class="actions secondary-actions">
+        <button type="button" id="save-button">Save project</button>
+        <button type="button" id="load-button">Load project</button>
+        <button type="button" id="reset-storage-button">Reset save</button>
+      </div>
+
+      <p class="shortcut-hint">Shortcut: <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd> to render.</p>
+    </form>
+
+    <section id="result-container" aria-live="polite">
+      <h2>Preview</h2>
+      <div id="result"></div>
+
+      <div class="code-header">
+        <h2>Generated HTML</h2>
+        <div>
+          <button type="button" id="copy-button">Copy</button>
+          <button type="button" id="download-button">Download</button>
+        </div>
+      </div>
+
+      <div class="stats" id="stats">
+        <span><strong>Elements:</strong> <span id="stat-elements">0</span></span>
+        <span><strong>Lines:</strong> <span id="stat-lines">0</span></span>
+        <span><strong>Bytes:</strong> <span id="stat-bytes">0</span></span>
+      </div>
+
+      <pre id="html-code"></pre>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
 </body>
 </html>
