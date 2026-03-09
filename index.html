@@ -12,19 +12,7 @@
   <main class="container">
     <form id="ec" aria-label="Render form">
       <h1>RenderFill</h1>
-      <p class="subtitle">Build HTML visually, iterate quickly, and export safely.</p>
-
-      <label for="template-select">Quick templates</label>
-      <div class="template-row">
-        <select id="template-select">
-          <option value="" selected>Choose a template</option>
-          <option value="hero">Hero title + paragraph</option>
-          <option value="cta">Call-to-action link button</option>
-          <option value="list">Starter unordered list</option>
-          <option value="table">Starter 2-column table row</option>
-        </select>
-        <button type="button" id="use-template-button">Use</button>
-      </div>
+      <p class="subtitle">Build HTML visually, then copy the generated markup.</p>
 
       <label for="element-select">Element</label>
       <select id="element-select">
@@ -67,22 +55,14 @@
       <input type="text" id="element-content" placeholder="Inside text or URL">
 
       <label for="element-attributes">Extra attributes</label>
-      <input type="text" id="element-attributes" placeholder='class="card" id="hero" data-role="lead"'>
-      <small class="hint">Tip: use quoted HTML attributes (e.g. <code>class="hero"</code>).</small>
+      <input type="text" id="element-attributes" placeholder='class="card" id="hero"'>
+      <small class="hint">Tip: add optional attributes with valid HTML syntax.</small>
 
       <div class="actions">
         <button type="button" id="render-button">Render</button>
         <button type="button" id="undo-button">Undo</button>
         <button type="button" id="clear-button">Clear</button>
       </div>
-
-      <div class="actions secondary-actions">
-        <button type="button" id="save-button">Save project</button>
-        <button type="button" id="load-button">Load project</button>
-        <button type="button" id="reset-storage-button">Reset save</button>
-      </div>
-
-      <p class="shortcut-hint">Shortcut: <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd> to render.</p>
     </form>
 
     <section id="result-container" aria-live="polite">
@@ -96,15 +76,7 @@
           <button type="button" id="download-button">Download</button>
         </div>
       </div>
-
-      <div class="stats" id="stats">
-        <span><strong>Elements:</strong> <span id="stat-elements">0</span></span>
-        <span><strong>Lines:</strong> <span id="stat-lines">0</span></span>
-        <span><strong>Bytes:</strong> <span id="stat-bytes">0</span></span>
-      </div>
-
       <pre id="html-code"></pre>
-      <p id="status" role="status" aria-live="polite"></p>
     </section>
   </main>
 </body>
